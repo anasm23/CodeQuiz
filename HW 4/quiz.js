@@ -1,3 +1,4 @@
+/// get Elements from html 
 const startButton = document.getElementById('start-btn')
 const nextButton = document.getElementById('next-btn')
 const questionContainerElement = document.getElementById('question-container')
@@ -126,3 +127,26 @@ const questions = [
     ]
   }
 ]
+
+
+//highscores
+
+var Hscore = document.querySelector("#highscore");
+var clear = document.querySelector("#clear");
+
+clear.addEventListener("click", function () {
+    localStorage.reload();
+});
+
+var scores = localStorage.getItem("scores");
+scores = JSON.parse(scores);
+
+if (scores !== null) {
+
+    for (var i=0; i< scores.length; i++) {
+
+        var scorelist = document.createElement("list");
+        scorelist.textContent = scores[i].initials + " " + scores[i].score;
+    }
+}
+
