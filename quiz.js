@@ -24,7 +24,7 @@ var timeleft = 60;
 function setTimer(){
   var timer = setInterval(function(){
     timeleft--;
-    timediv.textContent = timeleft + "seconds left";
+    timediv.textContent = timeleft + " seconds left";
 
     if(timeleft === 0){
       clearInterval(timer);
