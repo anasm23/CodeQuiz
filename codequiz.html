@@ -8,11 +8,10 @@
   <script defer src="quiz.js"></script>
   <title>Quiz App</title>
 </head>
-
 <body>
-  <p style="color: black; font-size: 90px; text-align: left;"> CODE QUIZ!</p>
- 
+  <div id="timediv">Timer: 60</div>
   <div class="container">
+    <header class="header">CODE QUIZ</header>
     <div id="question-container" class="hide">
       <div id="question">Question</div>
       <div id="answer-buttons" class="btn-grid">
@@ -27,8 +26,6 @@
       <button id="next-btn" class="next-btn btn hide">Next</button>
     </div>
   </div>
-  <div id="hsbtn">
-    <button>HIGH SCORES</button>
-  </div>
+  <button>HIGH SCORES</button>
 </body>
 </html>

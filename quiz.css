@@ -2,7 +2,16 @@
     box-sizing: border-box;
     font-family: 'Times New Roman', Times, serif;
   }
-  
+  .navbar{
+    padding-top: 10px;
+    font-size: 100px;
+    position: absolute;
+    padding-bottom: 500px;
+  }
+
+  .header{
+     text-align: center;
+   }
   :root {
     --hue-neutral: 200;
     --hue-wrong: 0;
@@ -14,11 +23,11 @@
     padding: 0;
     margin: 0;
     display: flex;
-    width: 100vw;
-    height: 100vh;
+    min-width: 50%;
+    min-height: 50%;
     justify-content: center;
     align-items: center;
-    background-color:blue;
+    background-color:grey;
   }
   
   body.correct {
@@ -30,8 +39,10 @@
   }
   
   .container {
-    width: 800px;
-    max-width: 80%;
+    width: 1000px;
+    min-height: 50%;
+    min-width: 50%;
+    position: relative;
     background-color: white;
     border-radius: 5px;
     padding: 10px;
@@ -51,6 +62,7 @@
     background-color: hsl(var(--hue), 100%, 50%);
     border-radius: 5px;
     padding: 5px 10px;
+    min-height: 75%;
     margin: auto;
     color: white;
     outline: none;
@@ -72,7 +84,8 @@
   .start-btn, .next-btn {
     font-size: 1.5rem;
     font-weight: bold;
-    padding: 10px 20px;
+    position: static;
+
   }
   
   .controls {
@@ -87,4 +100,5 @@
 
   .hsbtn{
     float:right;
+    padding-bottom: 25px;
   }

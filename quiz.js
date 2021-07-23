@@ -1,21 +1,40 @@
 /// get Elements from html 
 const startButton = document.getElementById('start-btn')
-const nextButton = document.getElementById('next-btn')
-const questionContainerElement = document.getElementById('question-container')
-const questionElement = document.getElementById('question')
-const answerButtonsElement = document.getElementById('answer-buttons')
+const nextButton = document.getElementById('next-btn');
+const questionContainerElement = document.getElementById('question-container');
+const questionElement = document.getElementById('question');
+const answerButtonsElement = document.getElementById('answer-buttons');
 const username = document.getElementById('username');
 const saveScoreBtn = document.getElementById('saveScoreBtn')
 const finalscore = document.getElementById("finalScore");
-const mostRecentScore = localStorage.getItem('mostRecentScore')
+const mostRecentScore = localStorage.getItem('mostRecentScore');
+var timeidv = document.getElementById(".timediv");
 
 let shuffledQuestions, currentQuestionIndex
-
+ 
 startButton.addEventListener('click', startGame)
+startButton.addEventListener('click', setTimer)
 nextButton.addEventListener('click', () => {
   currentQuestionIndex++
   setNextQuestion()
+  
 })
+var timeleft = 60;
+///timer function
+function setTimer(){
+  var timer = setInterval(function(){
+    timeleft--;
+    timediv.textContent = timeleft + "seconds left";
+
+    if(timeleft === 0){
+      clearInterval(timer);
+    }
+  }, 1000);
+}
+
+
+
+///game function
 function startGame() {
   startButton.classList.add('hide')
   shuffledQuestions = questions.sort(() => Math.random() - .5)
@@ -134,9 +153,9 @@ const questions = [
 var Hscore = document.querySelector("#highscore");
 var clear = document.querySelector("#clear");
 
-clear.addEventListener("click", function () {
-    localStorage.reload();
-});
+// clear.addEventListener("click", function () {
+//     localStorage.reload();
+// });
 
 var scores = localStorage.getItem("scores");
 scores = JSON.parse(scores);
