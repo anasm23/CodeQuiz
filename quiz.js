@@ -4,22 +4,69 @@ const nextButton = document.getElementById('next-btn');
 const questionContainerElement = document.getElementById('question-container');
 const questionElement = document.getElementById('question');
 const answerButtonsElement = document.getElementById('answer-buttons');
-const username = document.getElementById('username');
-const saveScoreBtn = document.getElementById('saveScoreBtn')
-const finalscore = document.getElementById("finalScore");
-const mostRecentScore = localStorage.getItem('mostRecentScore');
 var timeidv = document.getElementById(".timediv");
-
-let shuffledQuestions, currentQuestionIndex
- 
-startButton.addEventListener('click', startGame)
-startButton.addEventListener('click', setTimer)
-nextButton.addEventListener('click', () => {
-  currentQuestionIndex++
-  setNextQuestion()
-  
-})
+var score = 0;
 var timeleft = 60;
+var countscore = document.querySelector(".score");
+
+
+
+
+console.log(countscore);
+let shuffledQuestions, currentQuestionIndex
+console.log(window.localStorage);
+
+/// onclick functions to start game and timer. 
+startButton.addEventListener('click', startGame);
+startButton.addEventListener('click', setTimer);
+nextButton.addEventListener('click', () => {
+  if(questions.answer === true){
+    core++;
+      countscore.textContent = "Score: " + score;
+      currentQuestionIndex++
+  setNextQuestion()
+  }
+  else if (questions.answer === false);{
+    score--;
+    countscore.textContent = "Score: " + score;
+    currentQuestionIndex++
+  setNextQuestion()
+  }
+  //   do{
+  //     score++;
+  //     countscore.textContent = "Score: " + score;
+  //     currentQuestionIndex++
+  // setNextQuestion()
+  //   }
+  //   while(questions.answer === true );
+  // if (questions.answer === false){
+  //   score--;
+  //   countscore.textContent = "Score: " + score;
+  //   currentQuestionIndex++
+  // setNextQuestion()
+  // }
+})
+
+function addsc(){
+  do{
+    score++
+    countscore.textContent = "Score: " + score;
+    currentQuestionIndex++
+setNextQuestion()
+  }
+  while(questions.answer === true );
+}
+function subscore(){
+  if (questions.answer === false){
+    score--;
+    countscore.textContent = "Score: " + score;
+    currentQuestionIndex++
+  setNextQuestion()
+  }
+  else {
+    addsc();
+  }
+}
 ///timer function
 function setTimer(){
   var timer = setInterval(function(){
@@ -31,6 +78,31 @@ function setTimer(){
     }
   }, 1000);
 }
+
+///local storage
+var count = localStorage.getItem("count");
+
+/// score counter
+var countscore = document.querySelector(".score");
+// function addscore(){
+//   if (questions.answer === true){
+//   score++
+//   countscore.textContent = "Score: " + score;
+//   }
+//   else{
+//     score--;
+//     countscore.textContent = "Score: " + score;
+//   }
+// }
+
+// function incscore(){
+// if(answer.correct === true) {
+//   countscore++;
+//   countscore.textContent = "Score:" + score ;
+// }
+
+// console.log(countscore);
+
 
 
 
@@ -55,7 +127,7 @@ function showQuestion(question) {
     button.innerText = answer.text
     button.classList.add('btn')
     if (answer.correct) {
-      button.dataset.correct = answer.correct
+    button.dataset.correct = answer.correct
     }
     button.addEventListener('click', selectAnswer)
     answerButtonsElement.appendChild(button)
@@ -77,6 +149,7 @@ function selectAnswer(e) {
   Array.from(answerButtonsElement.children).forEach(button => {
     setStatusClass(button, button.dataset.correct)
   })
+  
   if (shuffledQuestions.length > currentQuestionIndex + 1) {
     nextButton.classList.remove('hide')
   } else {
@@ -112,10 +185,10 @@ const questions = [
   {
     question: 'The condition in an if / else statement is enclosed within ____.',
     answers: [
-      { text: '1. quotes', correct: true },
-      { text: '2. curly brackets', correct: true },
-      { text: '3. parenthesis', correct: true },
-      { text: '4. square brackets', correct: true },
+      { text: '1. quotes', correct: false },
+      { text: '2. curly brackets', correct: false},
+      { text: '3. parenthesis', correct: false},
+      { text: '4. all of the above', correct: true },
     ]
   },
   {
@@ -133,7 +206,7 @@ const questions = [
         { text: '1. commas', correct: false },
         { text: '2. curly brackets', correct: false },
         { text: '3. quotes', correct: false },
-        { text: '4. parenthesis', correct: false },
+        { text: '4. parenthesis', correct: true },
     ]
   },
   {
@@ -142,30 +215,8 @@ const questions = [
         { text: '1. Javascript', correct: false },
         { text: '2. terminal/bash', correct: false },
         { text: '3. for loops', correct: false },
-        { text: '4. console log', correct: false },
+        { text: '4. console log', correct: true },
     ]
   }
 ]
-
-
-//highscores
-
-var Hscore = document.querySelector("#highscore");
-var clear = document.querySelector("#clear");
-
-// clear.addEventListener("click", function () {
-//     localStorage.reload();
-// });
-
-var scores = localStorage.getItem("scores");
-scores = JSON.parse(scores);
-
-if (scores !== null) {
-
-    for (var i=0; i< scores.length; i++) {
-
-        var scorelist = document.createElement("list");
-        scorelist.textContent = scores[i].initials + " " + scores[i].score;
-    }
-}
 
