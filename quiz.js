@@ -20,31 +20,31 @@ console.log(window.localStorage);
 startButton.addEventListener('click', startGame);
 startButton.addEventListener('click', setTimer);
 nextButton.addEventListener('click', () => {
-  if(questions.answer === true){
-    core++;
-      countscore.textContent = "Score: " + score;
-      currentQuestionIndex++
-  setNextQuestion()
-  }
-  else if (questions.answer === false);{
-    score--;
-    countscore.textContent = "Score: " + score;
-    currentQuestionIndex++
-  setNextQuestion()
-  }
-  //   do{
-  //     score++;
+  // if(questions.answer === true){
+  //   core++;
   //     countscore.textContent = "Score: " + score;
   //     currentQuestionIndex++
   // setNextQuestion()
-  //   }
-  //   while(questions.answer === true );
-  // if (questions.answer === false){
+  // }
+  // else if (questions.answer === false);{
   //   score--;
   //   countscore.textContent = "Score: " + score;
   //   currentQuestionIndex++
   // setNextQuestion()
   // }
+    do{
+      score++;
+      countscore.textContent = "Score: " + score;
+      currentQuestionIndex++
+  setNextQuestion()
+    }
+    while(questions.answer === true );
+  if (questions.answer === false){
+    score--;
+    countscore.textContent = "Score: " + score;
+    currentQuestionIndex++
+  setNextQuestion()
+  }
 })
 
 function addsc(){
