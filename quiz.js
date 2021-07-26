@@ -8,8 +8,8 @@ var timeidv = document.getElementById(".timediv");
 var score = 0;
 var timeleft = 60;
 var countscore = document.querySelector(".score");
-
-
+var output = document.querySelector(".textscore");
+console.log(output);
 
 
 console.log(countscore);
@@ -153,8 +153,10 @@ function selectAnswer(e) {
   if (shuffledQuestions.length > currentQuestionIndex + 1) {
     nextButton.classList.remove('hide')
   } else {
-    startButton.innerText = 'Restart'
+    startButton.innerText = 'Restart';
+    questionContainerElement.textContent = "you scored " + score +" out of 5" ;
     startButton.classList.remove('hide')
+
   }
 }
 
@@ -217,6 +219,14 @@ const questions = [
         { text: '3. for loops', correct: false },
         { text: '4. console log', correct: true },
     ]
+  },
+  {
+    question: 'What is the most common coding language used  ',
+    answers: [
+        { text: '1. Javascript', correct: false },
+        { text: '2. terminal/bash', correct: false },
+        { text: '3. Java', correct: false },
+        { text: '4. Html', correct: true },
+    ]
   }
 ]
-
