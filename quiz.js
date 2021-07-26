@@ -9,11 +9,12 @@ var score = 0;
 var timeleft = 60;
 var countscore = document.querySelector(".score");
 var output = document.querySelector(".textscore");
-console.log(output);
 
-
-console.log(countscore);
 let shuffledQuestions, currentQuestionIndex
+var highscores = document.querySelector(".hsbtn");
+
+console.log(highscores);
+console.log(output);
 console.log(window.localStorage);
 
 /// onclick functions to start game and timer. 
@@ -81,6 +82,7 @@ function setTimer(){
 
 ///local storage
 var count = localStorage.getItem("count");
+
 
 /// score counter
 var countscore = document.querySelector(".score");
@@ -156,7 +158,6 @@ function selectAnswer(e) {
     startButton.innerText = 'Restart';
     questionContainerElement.textContent = "you scored " + score +" out of 5" ;
     startButton.classList.remove('hide')
-
   }
 }
 
@@ -172,6 +173,14 @@ function setStatusClass(element, correct) {
 function clearStatusClass(element) {
   element.classList.remove('correct')
   element.classList.remove('wrong')
+}
+
+
+
+function scorescard(){
+  var name = prompt("Enter your initials")
+  var disp = document.querySelector('.display');
+  alert(name +": "+ score + " points ");
 }
 
 const questions = [
