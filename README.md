@@ -1,6 +1,6 @@
 ## CODE QUIZ!
 
-Link to deployed site: https://limitless-river-02651.herokuapp.com/
+Link to deployed site: https://anasm23.github.io/CodeQuiz/
 
 ## SCREENSHOT
 
